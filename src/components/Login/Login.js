@@ -100,10 +100,13 @@ const Login = () => {
             newUserInfo.success = true;
             setLoggedInUser(newUserInfo);
             updateUserName(loggedInUser.name);
-            const signedInUser = {name: res.user.name, email: res.user.email}
-            console.log(signedInUser)
-            setLoggedInUser(signedInUser);
-            history.replace(from)
+            const signedInUser = {
+              isSignedIn: 'true',
+              name: res.user.displayName,
+               email: res.user.email
+              };
+          setLoggedInUser(signedInUser);
+          history.replace(from);
             
          })
          .catch( error => {
@@ -122,10 +125,13 @@ const Login = () => {
            newUserInfo.success = true;
            setLoggedInUser(newUserInfo);
            updateUserName(loggedInUser.name);
-           const signedInUser = {name: res.user.name, email: res.user.email}
-           console.log(res)
-           setLoggedInUser(signedInUser);
-           history.replace(from)
+           const signedInUser = {
+            isSignedIn: 'true',
+            name: res.user.displayName,
+             email: res.user.email
+            };
+        setLoggedInUser(signedInUser);
+        history.replace(from);
            
          })
          .catch(function(error) {
@@ -179,7 +185,7 @@ const Login = () => {
                             <br />
                             <input type="submit" className="btn btn-warning btn-block" value={newUser ? "Sign up" : "Sign In" }/>
                            
-                            <p className="text-center">Don't have an account?<a href="#" onClick={() => setNewUser(!newUser)}>Create a new account</a> </p>
+                            <p className="text-center">Don't have an account?<span onClick={() => setNewUser(!newUser)} style={{color: "blue"}}>Create a new account</span></p>
                         </form>
                         <p style={{color: 'red', textAlign: 'center'}}>{loggedInUser.error}</p>
                         {
