@@ -21,13 +21,7 @@ import Booking from './components/Destination/Booking';
 export const UserContext = createContext()
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({
-    isSignedIn: false,
-    name: '',
-    email: '',
-    password: '',
-    error: ''
-  });
+  const [loggedInUser, setLoggedInUser] = useState({});
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>

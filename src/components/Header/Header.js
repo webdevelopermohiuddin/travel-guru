@@ -50,7 +50,7 @@ const Header = () => {
           </ul>
           <h4>{loggedInUser.name}</h4>
                 {
-        loggedInUser.isSignedIn ? 
+        loggedInUser.isSignedIn || loggedInUser.name ? 
         <Link to="/login" className="nav-link">
         <button type="button" className="btn btn-outline-warning" onClick={handleSignOut}>Sign Out</button>
       </Link>

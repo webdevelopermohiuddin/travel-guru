@@ -8,7 +8,7 @@ const PrivateRoute = ({ children, ...rest }) => {
             <Route
             {...rest}
             render={({ location }) =>
-            loggedInUser.isSignedIn ? (
+            loggedInUser. name || loggedInUser.email ? (
                 children
                 ) : (
                 <Redirect

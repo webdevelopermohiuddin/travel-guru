@@ -6,7 +6,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 
 const Login = () => {
@@ -100,12 +100,16 @@ const Login = () => {
             newUserInfo.success = true;
             setLoggedInUser(newUserInfo);
             updateUserName(loggedInUser.name);
-            history.replace(from);
+            const signedInUser = {name: res.user.name, email: res.user.email}
+            console.log(signedInUser)
+            setLoggedInUser(signedInUser);
+            history.replace(from)
+            
          })
          .catch( error => {
            const newUserInfo = {...loggedInUser};
            newUserInfo.error = error.message;
-          //  newUserInfo.success = false;
+           newUserInfo.success = false;
            setLoggedInUser(newUserInfo);
          });
         }
@@ -117,12 +121,17 @@ const Login = () => {
            newUserInfo.error = " ";
            newUserInfo.success = true;
            setLoggedInUser(newUserInfo);
-           history.replace(from);
+           updateUserName(loggedInUser.name);
+           const signedInUser = {name: res.user.name, email: res.user.email}
+           console.log(res)
+           setLoggedInUser(signedInUser);
+           history.replace(from)
+           
          })
          .catch(function(error) {
            const newUserInfo = {...loggedInUser};
            newUserInfo.error = error.message;
-          //  newUserInfo.success = false;
+           newUserInfo.success = false;
            setLoggedInUser(newUserInfo);
          });
         }
@@ -168,11 +177,14 @@ const Login = () => {
                                 </div>
                             </div> 
                             <br />
-                            <input type="submit" className="btn btn-warning btn-block" value={newUser ? "Sign up" : "Sign in"}/>
-                            
+                            <input type="submit" className="btn btn-warning btn-block" value={newUser ? "Sign up" : "Sign In" }/>
+                           
                             <p className="text-center">Don't have an account?<a href="#" onClick={() => setNewUser(!newUser)}>Create a new account</a> </p>
                         </form>
-                        <p style={{color: 'red'}}>{loggedInUser.error}</p>
+                        <p style={{color: 'red', textAlign: 'center'}}>{loggedInUser.error}</p>
+                        {
+                           loggedInUser.success && <p style={{color: 'green'}}>User {newUser ? "created" : "logged in"} successfully</p>
+                         }
                     </div>
                     <p className="text-center">or</p>
                     <div className="row m-2 border border-secondary rounded-pill">
