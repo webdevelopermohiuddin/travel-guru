@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import hotelInfo from '../../FakeData/HotelInfo'
 import Hotel from '../Hotel/Hotel';
+import Header from '../Header/Header';
 
 class Search extends Component {
     render() {
     return (
+      <div>
+        <Header/>
          <div className="container">
            <div className="row mt-2">
              <div className="col-md-8">
@@ -25,6 +28,7 @@ class Search extends Component {
              </div>
            </div>
          </div>
+      </div>
     );
  };
 };

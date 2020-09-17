@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react';
 import './App.css';
-import Destination from './components/Destination/Destination';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Search from './components/Search/Search';
@@ -15,22 +14,30 @@ import {
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Booking from './components/Destination/Booking';
+
 
 
 export const UserContext = createContext()
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({})
+  const [loggedInUser, setLoggedInUser] = useState({
+    isSignedIn: false,
+    name: '',
+    email: '',
+    password: '',
+    error: ''
+  });
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
        <Router>
-        <Header/>
         <Switch>
            <Route path="/home">
             <Home/>
            </Route>
-           <Route path="/destination">
-            <Destination/>
+           <Route path="/booking/:id">
+            <Booking/>
            </Route>
            <Route path="/login">
              <Login/>

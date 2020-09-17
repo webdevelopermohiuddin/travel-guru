@@ -7,6 +7,7 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import Header from '../Header/Header';
 
 const Login = () => {
      const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -86,6 +87,7 @@ const Login = () => {
           const newUserInfo = {...loggedInUser};
           newUserInfo[e.target.name] = e.target.value;
           setLoggedInUser(newUserInfo);
+          
         }
     }
 
@@ -103,7 +105,7 @@ const Login = () => {
          .catch( error => {
            const newUserInfo = {...loggedInUser};
            newUserInfo.error = error.message;
-           newUserInfo.success = false;
+          //  newUserInfo.success = false;
            setLoggedInUser(newUserInfo);
          });
         }
@@ -120,7 +122,7 @@ const Login = () => {
          .catch(function(error) {
            const newUserInfo = {...loggedInUser};
            newUserInfo.error = error.message;
-           newUserInfo.success = false;
+          //  newUserInfo.success = false;
            setLoggedInUser(newUserInfo);
          });
         }
@@ -141,18 +143,20 @@ const Login = () => {
        }
 
     return (
-        <div className="container">
+       <div>
+         <Header/>
+         <div className="container">
             <div className="row mt-3 justify-content-center">
                 <div className="col-md-6 border border-secondary">
                     <div>
                         <h1>Login</h1>
                          <br/>
                         <form onSubmit={handleSubmit}>
-                        {newUser && <input type="name" className="form-control" onBlur={handleBlur} placeholder="Your name" required/>}
+                        {newUser && <input type="name" name="name" className="form-control" onBlur={handleBlur} placeholder="Your name" required/>}
                             <br/>
-                            <input type="text" className="form-control" onBlur={handleBlur} placeholder="Your email" required />
+                            <input type="text" name="email" className="form-control" onBlur={handleBlur} placeholder="Your email" required />
                             <br />
-                            <input type="password" className="form-control" onBlur={handleBlur} placeholder="password" required/>
+                            <input type="password" name="password" className="form-control" onBlur={handleBlur} placeholder="password" required/>
                              <br/>
                             <div className="row d-flex justify-content-around text-center">
                                 <div className="col-6">
@@ -164,15 +168,11 @@ const Login = () => {
                                 </div>
                             </div> 
                             <br />
-                            {/* <input type="submit" value="Log in" className="btn btn-warning btn-block"/> */}
                             <input type="submit" className="btn btn-warning btn-block" value={newUser ? "Sign up" : "Sign in"}/>
                             
                             <p className="text-center">Don't have an account?<a href="#" onClick={() => setNewUser(!newUser)}>Create a new account</a> </p>
                         </form>
                         <p style={{color: 'red'}}>{loggedInUser.error}</p>
-                        {
-                            loggedInUser.success && <p style={{color: 'green'}}>User {newUser ? "created" : "logged in"} successfully</p>
-                        }
                     </div>
                     <p className="text-center">or</p>
                     <div className="row m-2 border border-secondary rounded-pill">
@@ -193,7 +193,8 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-         </div>   
+         </div> 
+       </div>  
     );
 };
 

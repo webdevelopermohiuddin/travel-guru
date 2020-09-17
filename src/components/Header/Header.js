@@ -26,7 +26,7 @@ const Header = () => {
   }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
         <img src={logo} alt="company-logo" className="navbar-brand px-3" id="logo" />
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -39,24 +39,22 @@ const Header = () => {
           </form>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active px-2">
-              <Link to="/home" className="nav-link">Home</Link>
+              <Link to="/home" className="nav-link text-white">Home</Link>
             </li>
             <li className="nav-item px-3">
-              <Link to="/destination" className="nav-link">Destination</Link>
+              <Link to="/booking/1" className="nav-link text-white">Booking</Link>
             </li>
             <li className="nav-item px-3">
-              <Link to="/search" className="nav-link">Search</Link>
+              <Link to="/search" className="nav-link text-white">Search</Link>
             </li>
           </ul>
           <h4>{loggedInUser.name}</h4>
                 {
         loggedInUser.isSignedIn ? 
-        // <button onClick={handleSignOut}>Sign Out</button>
         <Link to="/login" className="nav-link">
         <button type="button" className="btn btn-outline-warning" onClick={handleSignOut}>Sign Out</button>
       </Link>
         :
-        // <button onClick={handleSignIn}>Sign In with Google</button>
         <Link to="/login" className="nav-link">
         <button type="button" className="btn btn-outline-warning">Log in</button>
       </Link>

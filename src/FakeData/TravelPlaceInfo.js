@@ -2,7 +2,7 @@ const TravelPlaceInfo = [
     {
         name: "COX'S BAZAR",
         id: '1',
-        img: "https://i.ibb.co/Hqybr6k/Rectangle-1.png",
+        img: "https://i.ibb.co/SQcmSXf/Sajek.png",
         description: "There are many variations of passages of Lorem Ipsum available, but the majority.",
         details: "Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it ...",
         origin:'‎Chittagong'
