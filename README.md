@@ -5,9 +5,7 @@
 - This project is formatted for travel lovers people. You can book any hotel by this site  
 - You have to login by google or facebook or email, when you want to book any hotel of your favorite  
 place.  
-- Also included google map in this site.  
-- Technology: HTML5, CSS3 ReactBootstrap, Context API, Redirects(auth), Firebase  
-etc.
+- Also included google map in this site. 
 
 **Technology:**
 
